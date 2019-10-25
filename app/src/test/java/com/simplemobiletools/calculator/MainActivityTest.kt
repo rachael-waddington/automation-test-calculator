@@ -116,7 +116,7 @@ class MainActivityTest {
         setDouble(3.0)
         activity.calc.handleResult()
         assertEquals("3", getDisplayedNumber())
-        checkFormula("")
+        checkFormula("0+3")
     }
 
     @Test
