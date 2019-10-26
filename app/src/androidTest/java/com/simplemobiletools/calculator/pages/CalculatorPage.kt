@@ -29,8 +29,8 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
 
     fun manipulateNumbers(numbers: ArrayList<Double>, modifier: Char) = apply {
         for (value in numbers) {
-            // Don't add modifier until a number has already been entered
-            if (!initialNumberEntered) {
+            // Don't add modifier until a number has already been entered (special case: root removed)
+            if (!initialNumberEntered && modifier != '√') {
                 enterNumber(value)
                 // Initial value has now been entered
                 initialNumberEntered = true
@@ -49,9 +49,12 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
             '*' -> click(multiplyBtn)
             '^' -> click(powerBtn)
             '%' -> click(moduloBtn)
-            '√' -> click(rootBtn)
         }
         enterNumber(number)
+        // special case: root must be entered after number
+        when (modifier) {
+            '√' -> click(rootBtn)
+        }
     }
 
 

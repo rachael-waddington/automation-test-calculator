@@ -54,6 +54,13 @@ class CalculatorTest {
                 .assertFormulaIs("23%12")
     }
 
+    @Test
+    fun canRootNumbers() {
+        CalculatorPage().manipulateNumbers(arrayListOf(9.0), '√')
+                .assertResultIs("3")
+                .assertFormulaIs("√9")
+    }
+
     @After
     fun tearDown() {
         activityRule.finishActivity()

@@ -27,7 +27,7 @@ open class BasePage(resourceIdName: Int) {
     fun matchesWithText(id: Int, text: String) {
         onView(withId(id)).check(matches(withText(text)))
     }
-    
+
     class InvalidPageException(message: String) : RuntimeException(message)
 }
 
