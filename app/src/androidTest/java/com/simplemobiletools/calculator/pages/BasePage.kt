@@ -2,15 +2,13 @@ package com.simplemobiletools.calculator.pages
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.assertion.ViewAssertions
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers.*
 
 open class BasePage(resourceIdName: Int) {
 
     init {
-        onView(withId(resourceIdName)).check(
-                ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(resourceIdName)).check(matches(isDisplayed()))
     }
 
     fun <T : BasePage> `is`(type: Class<T>): T {
@@ -27,9 +25,9 @@ open class BasePage(resourceIdName: Int) {
     }
 
     fun matchesWithText(id: Int, text: String) {
-        onView(withId(id)).check(ViewAssertions.matches(ViewMatchers.withText(text)))
+        onView(withId(id)).check(matches(withText(text)))
     }
-
+    
     class InvalidPageException(message: String) : RuntimeException(message)
 }
 
