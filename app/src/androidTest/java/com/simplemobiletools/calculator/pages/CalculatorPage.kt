@@ -16,6 +16,7 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
     private var rootBtn = R.id.btn_root
     private var result = R.id.result
     private var formula = R.id.formula
+    private var clearBtn = R.id.btn_clear
 
     private var initialNumberEntered = false
 
@@ -27,22 +28,36 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
         matchesWithText(formula, expectedFormula)
     }
 
-    fun manipulateNumbers(numbers: ArrayList<Double>, modifier: Char) = apply {
+    fun assertFormulaIsEmpty() = apply {
+        matchesWithNoText(formula)
+    }
+
+    fun clearSingleDigit() = apply {
+        click(clearBtn)
+    }
+
+    fun clearAll() = apply {
+        longClick(clearBtn)
+    }
+
+    fun manipulateNumbers(numbers: ArrayList<Double>, operator: Char) = apply {
         for (value in numbers) {
-            // Don't add modifier until a number has already been entered (special case: root removed)
-            if (!initialNumberEntered && modifier != '√') {
+            // Don't add operator until a number has already been entered
+            // Special case: '√' only has one number so must be handled later
+            if (!initialNumberEntered && operator != '√') {
                 enterNumber(value)
                 // Initial value has now been entered
                 initialNumberEntered = true
             } else {
-                manipulateNumber(value, modifier)
+                // Now operators can be added
+                manipulateNumber(value, operator)
             }
         }
         click(equalsBtn)
     }
 
-    private fun manipulateNumber(number: Double, modifier: Char) = apply {
-        when (modifier) {
+    private fun manipulateNumber(number: Double, operator: Char) {
+        when (operator) {
             '+' -> click(plusBtn)
             '-' -> click(minusBtn)
             '/' -> click(divideBtn)
@@ -51,14 +66,13 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
             '%' -> click(moduloBtn)
         }
         enterNumber(number)
-        // special case: root must be entered after number
-        when (modifier) {
+        // Special case: '√' must be entered after number
+        when (operator) {
             '√' -> click(rootBtn)
         }
     }
 
-
-    private fun enterNumber(number: Double) {
+    fun enterNumber(number: Double) = apply {
         // Convert to string array to isolate decimal point and enter one by one
         val digits = number.toString().map { it.toString() }
         for (digit in digits) {

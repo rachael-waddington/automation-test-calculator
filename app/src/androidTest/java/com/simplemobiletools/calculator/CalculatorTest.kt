@@ -61,6 +61,28 @@ class CalculatorTest {
                 .assertFormulaIs("√9")
     }
 
+    @Test
+    fun canClearDigit() {
+        CalculatorPage().enterNumber(.321)
+                .assertResultIs("0.321")
+                .clearSingleDigit()
+                .assertResultIs("0.32")
+                .clearSingleDigit()
+                .clearSingleDigit()
+                .assertResultIs("0")
+                .assertFormulaIsEmpty()
+    }
+
+    @Test
+    fun canClearAll() {
+        CalculatorPage().manipulateNumbers(arrayListOf(8.0, 9.0), '-')
+                .assertResultIs("-1")
+                .assertFormulaIs("8-9")
+                .clearAll()
+                .assertResultIs("0")
+                .assertFormulaIsEmpty()
+    }
+
     @After
     fun tearDown() {
         activityRule.finishActivity()
