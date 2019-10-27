@@ -62,6 +62,29 @@ class CalculatorTest {
     }
 
     @Test
+    fun canUseMultipleOperators() {
+        CalculatorPage().manipulateNumbers(arrayListOf(6.0, 7.5), '+')
+                .manipulateNumbers(arrayListOf(2.0, 0.5), '-')
+                .assertResultIs("11")
+                .assertFormulaIs("11.5-0.5")
+                .manipulateNumbers(arrayListOf(0.0),'^')
+                .assertResultIs("1")
+                .assertFormulaIs("11^0")
+                .manipulateNumbers(arrayListOf(33.0, 2.0, 2.0), '*')
+                .assertResultIs("132")
+                .assertFormulaIs("66*2")
+                .manipulateNumbers(arrayListOf(5.0), '/')
+                .assertResultIs("26.4")
+                .assertFormulaIs("132/5")
+    }
+
+    @Test
+    fun canEnterLargeNumbers() {
+        CalculatorPage().enterNumber(33333333333333333333.0)
+                .assertResultIs("33333333333333333333.0")
+    }
+
+    @Test
     fun canClearDigit() {
         CalculatorPage().enterNumber(.321)
                 .assertResultIs("0.321")
