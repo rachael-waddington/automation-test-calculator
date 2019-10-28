@@ -84,5 +84,4 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
             }
         }
     }
-
 }

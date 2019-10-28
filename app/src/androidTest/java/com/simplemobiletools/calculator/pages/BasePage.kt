@@ -12,31 +12,21 @@ open class BasePage(resourceIdName: Int) {
         onView(withId(resourceIdName)).check(matches(isDisplayed()))
     }
 
-    fun <T : BasePage> `is`(type: Class<T>): T {
-        if (type.isInstance(this)) {
-            return type.cast(this)
-        } else {
-            throw InvalidPageException(
-                    "Invalid page type. Expected: " + type.simpleName + ", but got: " + this.javaClass.simpleName)
-        }
-    }
-
-    fun click(id: Int) {
+    protected fun click(id: Int) {
         onView(withId(id)).perform(click())
     }
 
-    fun longClick(id: Int) {
+    protected fun longClick(id: Int) {
         onView(withId(id)).perform(longClick())
     }
 
-    fun matchesWithText(id: Int, text: String) {
+    protected fun matchesWithText(id: Int, text: String) {
         onView(withId(id)).check(matches(withText(text)))
     }
 
-    fun matchesWithNoText(id: Int) {
+    protected fun matchesWithNoText(id: Int) {
         onView(withId(id)).check(matches(withText("")))
     }
 
-    class InvalidPageException(message: String) : RuntimeException(message)
 }
 

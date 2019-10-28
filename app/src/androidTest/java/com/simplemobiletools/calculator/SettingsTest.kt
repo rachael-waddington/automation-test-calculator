@@ -1,0 +1,19 @@
+package com.simplemobiletools.calculator
+
+import android.support.test.rule.ActivityTestRule
+import com.simplemobiletools.calculator.activities.MainActivity
+import com.simplemobiletools.calculator.pages.CalculatorPage
+import org.junit.After
+import org.junit.Rule
+import org.junit.Test
+
+class SettingsTest {
+
+    @get:Rule
+    val activityRule = ActivityTestRule(MainActivity::class.java)
+
+    @After
+    fun tearDown() {
+        activityRule.finishActivity()
+    }
+}
