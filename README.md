@@ -1,9 +1,10 @@
 # automation-test-calculator
 
 Tests are executed using the Android Instrumented Tests configuration. 
-Currently there are 2 failing in CalculatorTest:
+Currently there are 3 failing in CalculatorTest:
   - canModuloNumbers(): In-app modulo not calculating results corrently (unit tests also failing)
-  - anEnterLargeNumbers(): When entering numbers over 16 digits the number changes 
+  - canEnterLargeNumbers(): When entering numbers over 16 digits the number changes 
+  - canParseImaginaryNumbers(): Cannot enter a negative number until equals is pressed, entering `-1.0 ROOT` doesn't take into account the negative and just roots positive 1
   
 ### Page object model:  
 The base page object is used to store all common methods for pages, such as clicking and assertions; 
