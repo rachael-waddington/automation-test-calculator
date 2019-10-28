@@ -18,7 +18,7 @@ All other pages extend BasePage (including the action bar) and store all methods
 ### Tests:
 The tests are written in plain English as much as possible, in the format `Page().action().nextAction().assertThis()` and should be readable and easy to follow for anyone.
 
-The calculator itself has the highest coverage as it will get the most use/traffic, coverage includes all button actions and a long number corner case. 
+The calculator itself has the highest coverage as it will get the most use/traffic, coverage includes all button actions and long and imaginary number corner cases. 
 
 Both the settings and about pages only have a single simple navigation test as the priority of this is lower; 
     in the future more tests would be added to assert the layout is correct & toggles function if deemed necessary. 
