@@ -28,6 +28,10 @@ open class BasePage(resourceIdName: Int) {
         onView(withId(id)).perform(longClick())
     }
 
+    protected fun clickItemWithContentDescription(text: String) {
+        onView(withContentDescription(text)).perform(click());
+    }
+
     protected fun matchesWithText(id: Int, text: String) {
         onView(withId(id)).check(matches(withText(text)))
     }

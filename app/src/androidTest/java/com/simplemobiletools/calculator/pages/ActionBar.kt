@@ -17,10 +17,14 @@ class ActionBar : BasePage(R.id.action_bar) {
         click("Settings")
     }
 
-    fun gotToAbout() {
+    fun goToAbout() {
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         openActionBarOverflowOrOptionsMenu(getInstrumentation().context)
         click("About")
+    }
+
+    fun clickBack() {
+        clickItemWithContentDescription("Navigate up")
     }
 }

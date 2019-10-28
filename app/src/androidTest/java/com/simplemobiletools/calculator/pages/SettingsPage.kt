@@ -7,4 +7,10 @@ class SettingsPage : BasePage(R.id.settings_holder) {
     fun assertActionBarTextIsCorrect() = apply {
         ActionBar().actionBarMatchesWithText("Settings")
     }
+
+    fun goBackToCalculator() = apply {
+        ActionBar().clickBack()
+        // Init to ensure on right page
+        CalculatorPage()
+    }
 }

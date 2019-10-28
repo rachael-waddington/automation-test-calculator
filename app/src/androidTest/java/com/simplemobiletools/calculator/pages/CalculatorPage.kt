@@ -4,19 +4,19 @@ import com.simplemobiletools.calculator.R
 
 class CalculatorPage : BasePage(R.id.calculator_holder) {
 
-    private var numberBtns = arrayOf(R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9)
-    private var plusBtn = R.id.btn_plus
-    private var minusBtn = R.id.btn_minus
-    private var divideBtn = R.id.btn_divide
-    private var multiplyBtn = R.id.btn_multiply
-    private var equalsBtn = R.id.btn_equals
-    private var decimalBtn = R.id.btn_decimal
-    private var powerBtn = R.id.btn_power
-    private var moduloBtn = R.id.btn_percent
-    private var rootBtn = R.id.btn_root
-    private var result = R.id.result
-    private var formula = R.id.formula
-    private var clearBtn = R.id.btn_clear
+    private val numberBtns = arrayOf(R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9)
+    private val plusBtn = R.id.btn_plus
+    private val minusBtn = R.id.btn_minus
+    private val divideBtn = R.id.btn_divide
+    private val multiplyBtn = R.id.btn_multiply
+    private val equalsBtn = R.id.btn_equals
+    private val decimalBtn = R.id.btn_decimal
+    private val powerBtn = R.id.btn_power
+    private val moduloBtn = R.id.btn_percent
+    private val rootBtn = R.id.btn_root
+    private val result = R.id.result
+    private val formula = R.id.formula
+    private val clearBtn = R.id.btn_clear
 
     private var initialNumberEntered = false
 
