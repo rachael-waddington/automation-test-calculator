@@ -80,14 +80,13 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
     }
 
     fun enterNumber(number: Double) = apply {
-        // Convert to string array to isolate decimal point and enter one by one
+        // Convert to string array to isolate decimal point or minus and enter one by one
         val digits = number.toString().map { it.toString() }
         for (digit in digits) {
-            if (digit == ".") {
-                click(decimalBtn)
-            }
-            else {
-                click(numberBtns[digit.toInt()])
+            when (digit) {
+                "." -> click(decimalBtn)
+                "-" -> click(minusBtn)
+                else -> click(numberBtns[digit.toInt()])
             }
         }
     }

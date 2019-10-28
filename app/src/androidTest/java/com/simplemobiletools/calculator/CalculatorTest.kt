@@ -86,6 +86,12 @@ class CalculatorTest {
     }
 
     @Test
+    fun canParseImaginaryNumbers() {
+        CalculatorPage().manipulateNumbers(arrayListOf(-1.0), ROOT)
+                .assertResultIs("NaN")
+    }
+
+    @Test
     fun canClearDigit() {
         CalculatorPage().enterNumber(.321)
                 .assertResultIs("0.321")
