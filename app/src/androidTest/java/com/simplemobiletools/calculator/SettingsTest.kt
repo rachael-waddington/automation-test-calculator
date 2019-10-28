@@ -17,7 +17,7 @@ class SettingsTest {
     fun doesHaveCorrectActionBar() {
         ActionBar().goToSettings()
         SettingsPage().assertActionBarTextIsCorrect()
-        SettingsPage().goBackToCalculator()
+                .goBackToCalculator()
     }
 
     @After

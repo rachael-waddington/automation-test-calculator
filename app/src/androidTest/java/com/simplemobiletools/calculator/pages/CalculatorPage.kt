@@ -1,6 +1,8 @@
 package com.simplemobiletools.calculator.pages
 
 import com.simplemobiletools.calculator.R
+import com.simplemobiletools.calculator.helpers.Operator
+import com.simplemobiletools.calculator.helpers.Operator.*
 
 class CalculatorPage : BasePage(R.id.calculator_holder) {
 
@@ -14,9 +16,9 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
     private val powerBtn = R.id.btn_power
     private val moduloBtn = R.id.btn_percent
     private val rootBtn = R.id.btn_root
+    private val clearBtn = R.id.btn_clear
     private val result = R.id.result
     private val formula = R.id.formula
-    private val clearBtn = R.id.btn_clear
 
     private var initialNumberEntered = false
 
@@ -44,35 +46,36 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
         longClick(clearBtn)
     }
 
-    fun manipulateNumbers(numbers: ArrayList<Double>, operator: Char) = apply {
+    fun manipulateNumbers(numbers: ArrayList<Double>, operator: Operator) = apply {
         for (value in numbers) {
             // Don't add operator until a number has already been entered
-            // Special case: '√' only has one number so must be handled later
-            if (!initialNumberEntered && operator != '√') {
+            // Special case: ROOT only has one number so must be handled later
+            if (!initialNumberEntered && operator != ROOT) {
                 enterNumber(value)
                 // Initial value has now been entered
                 initialNumberEntered = true
             } else {
                 // Now operators can be added
-                manipulateNumber(value, operator)
+                enterNumberAndOperator(value, operator)
             }
         }
         click(equalsBtn)
     }
 
-    private fun manipulateNumber(number: Double, operator: Char) {
+    // Enter a single operator and number
+    private fun enterNumberAndOperator(number: Double, operator: Operator) {
         when (operator) {
-            '+' -> click(plusBtn)
-            '-' -> click(minusBtn)
-            '/' -> click(divideBtn)
-            '*' -> click(multiplyBtn)
-            '^' -> click(powerBtn)
-            '%' -> click(moduloBtn)
+            ADD -> click(plusBtn)
+            MINUS -> click(minusBtn)
+            DIVIDE -> click(divideBtn)
+            MULTIPLY -> click(multiplyBtn)
+            POWER -> click(powerBtn)
+            MODULO -> click(moduloBtn)
         }
         enterNumber(number)
-        // Special case: '√' must be entered after number
+        // Special case: ROOT must be entered after number
         when (operator) {
-            '√' -> click(rootBtn)
+            ROOT -> click(rootBtn)
         }
     }
 

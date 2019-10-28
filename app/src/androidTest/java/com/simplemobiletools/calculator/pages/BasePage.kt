@@ -28,8 +28,8 @@ open class BasePage(resourceIdName: Int) {
         onView(withId(id)).perform(longClick())
     }
 
-    protected fun clickItemWithContentDescription(text: String) {
-        onView(withContentDescription(text)).perform(click());
+    protected fun clickItemWithContentDescription(contentDesc: String) {
+        onView(withContentDescription(contentDesc)).perform(click());
     }
 
     protected fun matchesWithText(id: Int, text: String) {

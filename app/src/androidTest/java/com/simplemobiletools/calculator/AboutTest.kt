@@ -17,8 +17,7 @@ class AboutTest {
     fun doesHaveCorrectActionBar() {
         ActionBar().goToAbout()
         AboutPage().assertActionBarTextIsCorrect()
-        AboutPage().goBackToCalculator()
-
+                .goBackToCalculator()
     }
 
     @After
