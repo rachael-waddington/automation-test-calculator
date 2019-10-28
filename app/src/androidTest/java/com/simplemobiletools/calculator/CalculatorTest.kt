@@ -106,6 +106,11 @@ class CalculatorTest {
                 .assertFormulaIsEmpty()
     }
 
+    @Test
+    fun doesHaveCorrectActionBar() {
+        CalculatorPage().assertActionBarTextIsCorrect()
+    }
+
     @After
     fun tearDown() {
         activityRule.finishActivity()

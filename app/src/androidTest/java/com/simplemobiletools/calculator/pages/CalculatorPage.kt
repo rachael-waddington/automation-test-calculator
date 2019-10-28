@@ -32,6 +32,10 @@ class CalculatorPage : BasePage(R.id.calculator_holder) {
         matchesWithNoText(formula)
     }
 
+    fun assertActionBarTextIsCorrect() = apply {
+        ActionBar().actionBarMatchesWithText("Calculator_debug")
+    }
+
     fun clearSingleDigit() = apply {
         click(clearBtn)
     }
